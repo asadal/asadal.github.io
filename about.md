@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+writing, coding, fishing, watching movies...
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Es gibt Minuten, in denen alle verborgenen Edelsteine der Seele offenliegen!
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[blaulaut@gmail.com](mailto:blaulaut@gmail.com)
