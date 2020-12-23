@@ -1,14 +1,9 @@
-\---
-
+---
 layout: post
-
 title: "2진수, 8진수, 16진수, 10진수"
-
 tags: [python, 파이썬, bin, oct, hex, int]
-
 comments: true
-
-\---
+---
 
 #### 10진수 → 2진수, 8진수, 16진수
 
