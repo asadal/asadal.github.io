@@ -20,19 +20,19 @@ avatar: https://raw.githubusercontent.com/asadal/asadal.github.io/master/images/
 # and URL Link(e.g. 'Theme' tab below) tabs. If you don't need one, just delete
 # it from the list(Delete '- name: ' and 'url: ', too!)
 navigation:
-  - name: Blog
+  - name: blog
     url: /
-  - name: About
+  - name: about
     url: /about
-  - name: Archive
+  - name: archive
     url: /archive
-  - name: Tags
+  - name: tags
     url: /tags
-  - name: Theme
+  - name: theme
     url: https://github.com/AWEEKJ/kiko-now
 
 # Pagination
-paginate: 5
+paginate: 10
 
 # Includes an icon in the footer for each username you enter
 footer-links:
