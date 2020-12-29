@@ -4,11 +4,10 @@ title: About
 permalink: /about/
 ---
 
+asadal.
+
 writing, coding, fishing, watching movies...
 
-### More Information
-
-Es gibt Minuten, in denen alle verborgenen Edelsteine der Seele offenliegen!
 
 ### Contact me
 
