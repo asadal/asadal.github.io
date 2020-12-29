@@ -6,7 +6,7 @@ permalink: /about/
 
 **asadal**
 
-writing, coding, fishing, watching movies...
+writing, coding, fishing, reading, watching movies...
 
 
 ### Contact me
