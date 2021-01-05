@@ -39,14 +39,14 @@ footer-links:
   behance: # https://www.behance.net/<username>
   dribbble:
   email: blaulaut@gmail.com
-  facebook: www.facebook.com/blaulaut
+  facebook: blaulaut
   flickr:
   github: asadal
   googleplus: # anything in your profile username that comes after plus.google.com/
   instagram:
   linkedin:
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: https://asadal.github.io/feed # just type anything here for a working RSS icon
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   tumblr: # https://<username>.tumblr.com
   twitter: asadal
