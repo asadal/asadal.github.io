@@ -17,8 +17,8 @@
     </div>
 
     {% include analytics.html %}
+    {% if page.use_math %}
+      {% include mathjax.html %}
+    {% endif %}
   </body>
-  {% if page.use_math %}
-    {% include mathjax.html %}
-  {% endif %}
 </html>
