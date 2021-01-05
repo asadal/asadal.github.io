@@ -23,13 +23,13 @@ navigation:
   - name: blog
     url: /
   - name: about
-    url: /about
+    url: /about/
   - name: archive
-    url: /archive
+    url: /archive/
   - name: tags
-    url: /tags
-  - name: theme
-    url: https://github.com/AWEEKJ/kiko-now
+    url: /tags/
+  - name: favs
+    url: /favs/
 
 # Pagination
 paginate: 10
