@@ -23,6 +23,7 @@ layout: default
 
   <div class="entry">
     {{ content }}
+    {% include mathjax.html %}
   </div>
   <div class="pagination">
     {% if page.previous.url %}
