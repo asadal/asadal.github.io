@@ -31,6 +31,13 @@ navigation:
   - name: theme
     url: https://github.com/AWEEKJ/kiko-now
 
+# Math equation
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
 # Pagination
 paginate: 10
 
