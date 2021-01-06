@@ -12,6 +12,13 @@ description: in vino veritas
 # Flags below are optional
 #
 
+# Math equation
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/asadal/asadal.github.io/master/images/jekyll-logo.png
 
