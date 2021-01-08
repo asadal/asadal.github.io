@@ -11,7 +11,7 @@ comments: true
 n = int(input())
 a = 1
 b = 0
-for _ in range(n):
+for _ in range(n-1):
     a, b = b, a+b
 print(a, b, sep=" ") # b가 n번째 피보나치 수.
 ```
