@@ -13,6 +13,7 @@ permalink: /favs/
 * [LeetCode](https://leetcode.com/)
 * [codecademy](https://www.codecademy.com/)
 * [Nomad Coders](https://nomadcoders.co/)
+* [Python Code](https://www.thepythoncode.com/)
 
 
 
