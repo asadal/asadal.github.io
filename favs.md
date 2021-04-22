@@ -61,3 +61,13 @@ permalink: /favs/
 
 * [rainbowhunt](https://rainbowhunt.com/index.html)
 * [simon's computer](https://simone.computer/#/webdesktops)
+
+
+
+##### Junior Media Today
+
+* [Twitter](https://twitter.com/nextliteracy)
+* [Facebook](https://www.facebook.com/nextmedialiteracy)
+* [Google News Publisher](https://news.google.com/publications/CAAqBwgKMJ26pAsw4MS8Aw?oc=3&ceid=KR:ko)
+
+
