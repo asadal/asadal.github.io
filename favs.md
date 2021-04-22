@@ -66,6 +66,8 @@ permalink: /favs/
 
 ##### Junior Media Today
 
+
+* [Website](https://www.nextliteracy.co.kr)
 * [Twitter](https://twitter.com/nextliteracy)
 * [Facebook](https://www.facebook.com/nextmedialiteracy)
 * [Google News Publisher](https://news.google.com/publications/CAAqBwgKMJ26pAsw4MS8Aw?oc=3&ceid=KR:ko)
