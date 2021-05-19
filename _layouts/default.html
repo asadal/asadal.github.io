@@ -17,9 +17,19 @@
       </div>
     </div>
     {% include analytics.html %}
-<!--     <script src="ProgressBar.js"></script>
-    <div class="scrollindicator">
-		  <div class="scrollprogress"></div>
-    </div> -->
+<!-- ProgressBar Start -->
+	<script type="text/javascript" src="https://rawcdn.githack.com/mburakerman/prognroll/0feda211643153bce2c69de32ea1b39cdc64ffbe/src/prognroll.js"></script> 
+	<script type="text/javascript"> 
+  	$(function() { 
+    		$("body").prognroll({ 
+      			height: 5, 
+      			color: "#a7d3f9" 
+    		}); 
+    	$(".content").prognroll({ 
+      		custom: true 
+    		}); 
+  	}); 
+  </script>
+<!-- ProgressBar End -->
   </body>
 </html>
