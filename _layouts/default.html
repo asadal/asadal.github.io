@@ -2,6 +2,20 @@
 <html>
   {% include head.html %}
   <body>
+<!-- ProgressBar Start -->
+	<script type="text/javascript" src="https://rawcdn.githack.com/mburakerman/prognroll/0feda211643153bce2c69de32ea1b39cdc64ffbe/src/prognroll.js"></script> 
+	<script type="text/javascript"> 
+  	$(function() { 
+    		$("body").prognroll({ 
+      			height: 3, 
+      			color: "#a7d3f9" 
+    		}); 
+    		$(".post").prognroll({ 
+      			custom: true 
+    		}); 
+  	}); 
+  </script>
+<!-- ProgressBar End -->
     {% include nav.html %}
 
     <div id="main" role="main" class="container">
@@ -17,19 +31,5 @@
       </div>
     </div>
     {% include analytics.html %}
-<!-- ProgressBar Start -->
-	<script type="text/javascript" src="https://rawcdn.githack.com/mburakerman/prognroll/0feda211643153bce2c69de32ea1b39cdc64ffbe/src/prognroll.js"></script> 
-	<script type="text/javascript"> 
-  	$(function() { 
-    		$("body").prognroll({ 
-      			height: 3, 
-      			color: "#a7d3f9" 
-    		}); 
-    		$(".post").prognroll({ 
-      			custom: true 
-    		}); 
-  	}); 
-  </script>
-<!-- ProgressBar End -->
   </body>
 </html>
