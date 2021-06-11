@@ -37,6 +37,8 @@ navigation:
     url: /tags/
   - name: favs
     url: /favs/
+  - name: writer
+    url: /writer
 
 # Pagination
 paginate: 10
