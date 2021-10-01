@@ -64,12 +64,10 @@ permalink: /favs/
 
 
 
-##### Junior Media Today
+##### Media
 
-
-* [Website](https://www.nextliteracy.co.kr)
-* [Twitter](https://twitter.com/nextliteracy)
-* [Facebook](https://www.facebook.com/nextmedialiteracy)
-* [Google News Publisher](https://news.google.com/publications/CAAqBwgKMJ26pAsw4MS8Aw?oc=3&ceid=KR:ko)
+* [Hankyoreh](https://www.hani.co.kr)
+* [Media Today](http://www.mediatoday.co.kr)
+* [Junior Media Today](http://www.nextliteracy.co.kr)
 
 
