@@ -63,6 +63,7 @@ $ mysql -u root -i
 ```
 # MySQL 7 이하
 mysql> grant all privileges on [DB이름].* to '계정ID'@'%' identified by '비밀번호' with grant option; # 계정 생성 & 모든 권한 부여
+mysql> flush privileges;
 ```
 
 ```
