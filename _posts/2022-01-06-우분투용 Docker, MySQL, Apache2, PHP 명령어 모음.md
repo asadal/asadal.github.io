@@ -58,9 +58,19 @@ $ docker rmi -f [이미지ID]
 $ mysql -u root -i
 ```
 
+### 모든 권한 부여 
 
+```
+# MySQL 7 이하
+mysql> grant all privileges on [DB이름].* to '계정ID'@'%' identified by '비밀번호' with grant option; # 계정 생성 & 모든 권한 부여
+```
 
-
+```
+# MySQL 8
+mysql> create  user '계정ID'@'%' identified by '비밀번호'; # 계정 생성
+mysql> grant all privileges on [DB이름].* to '계정ID'@'%' with grant option;
+mysql> flush privileges;
+```
 
 
 
