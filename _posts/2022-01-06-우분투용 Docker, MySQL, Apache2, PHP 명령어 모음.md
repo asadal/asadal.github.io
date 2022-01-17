@@ -19,6 +19,17 @@ $ docker ps
 $ docker ps -a
 ```
 
+### 시작 시 자동 실행
+```
+$ sudo systemctl enable docker.service 
+$ sudo systemctl enable containerd.service
+```
+
+### 컨테이너 실행 중지
+```
+$ docker stop [
+```
+
 ### 컨테이너 삭제
 ```
 $ docker rm [컨테이너ID]
