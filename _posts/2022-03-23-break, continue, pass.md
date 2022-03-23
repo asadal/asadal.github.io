@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Python] break, continue, pass"
+title: "[파이썬] break, continue, pass"
 author: "asadal"
 tags: ["python", "파이썬", "break", "pass", "continue"]
 comments: true
