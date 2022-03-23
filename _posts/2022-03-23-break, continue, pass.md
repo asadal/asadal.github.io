@@ -35,7 +35,7 @@ for num in range(10):
  반복문이 0부터 10까지 차례로 값을 보내다 5가 나오면 자동으로 반복문을 끝내고 빠져나온다. 아래는 비밀번호 입력창을 for문과 break로 구현한 예시.
 
 ```python
-for pass in range(1, 4):
+for pass in range(1, 4): # 입력 기회는 3번 제공.
 	passwd = input("\n비밀번호를 입력하세요: ")
   if passwd == 'Python':
     print("비밀번호가 일치합니다.\n다음 단계로 진행하세요.")
