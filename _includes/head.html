@@ -1,4 +1,7 @@
 <head>
+  {% if site.google_tag.ua %}
+  {% include gtag_head.html %}
+  {% endif %}
   <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
 
   {% include meta.html %}
