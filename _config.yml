@@ -71,6 +71,10 @@ disqus: gretele
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: G-LB18CWKKCY
 
+# Google Tag Manager
+google_tag:
+  ua: GTM-TN6MKHM
+
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
 url: https://asadal.github.io
