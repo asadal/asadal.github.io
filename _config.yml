@@ -39,6 +39,8 @@ navigation:
     url: /favs/
   - name: writer
     url: /writer
+  - name: Privacy Policy
+    url: /privacy
 
 # Pagination
 paginate: 10
