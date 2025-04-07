@@ -6,17 +6,22 @@
 (function() {
     // 설정값
     const pawSettings = {
-        enabled: true,         // 발자국 효과 활성화 여부
-        size: 30,              // 발자국 크기 (px)
-        duration: 3,           // 발자국 표시 지속 시간 (초)
-        opacity: 0.6,          // 발자국 투명도 (0-1)
-        color: 'orange',       // 발자국 색상 (black, orange, gray)
-        showTrail: false,      // 발자국 흔적 표시 여부
-        randomRotation: true   // 랜덤 회전 적용 여부
+        enabled: true,          // 발자국 효과 활성화 여부
+        size: 30,               // 발자국 크기 (px)
+        duration: 3,            // 발자국 표시 지속 시간 (초)
+        opacity: 0.6,           // 발자국 투명도 (0-1)
+        color: 'orange',        // 발자국 색상 (black, orange, gray)
+        showTrail: false,       // 발자국 흔적 표시 여부
+        randomRotation: true,   // 랜덤 회전 적용 여부
+        enabledPages: []        // 발자국 효과가 활성화될 특정 페이지 경로 (비어있으면 모든 페이지에서 활성화)
     };
 
     // 설정 저장소 키
     const STORAGE_KEY = 'catPawSettings';
+    
+    // 터치 이벤트 중복 방지를 위한 플래그
+    let touchProcessed = false;
+    const TOUCH_COOLDOWN = 300; // 밀리초
     
     // DOM이 로드된 후 초기화
     if (document.readyState === 'loading') {
@@ -26,18 +31,65 @@
     }
     
     /**
+     * 현재 페이지가 발자국 효과를 활성화할 대상인지 확인
+     * @returns {boolean} 발자국 효과 활성화 여부
+     */
+    function shouldEnablePawEffect() {
+        // enabledPages가 비어있으면 모든 페이지에서 활성화
+        if (!pawSettings.enabledPages || pawSettings.enabledPages.length === 0) {
+            return true;
+        }
+        
+        const currentPath = window.location.pathname;
+        
+        // 등록된 페이지 경로와 현재 페이지 경로 비교
+        return pawSettings.enabledPages.some(pattern => {
+            // 정규식 패턴인 경우
+            if (pattern.startsWith('/') && pattern.endsWith('/')) {
+                try {
+                    const regex = new RegExp(pattern.slice(1, -1));
+                    return regex.test(currentPath);
+                } catch (e) {
+                    console.error('잘못된 정규식 패턴:', pattern);
+                    return false;
+                }
+            }
+            // 문자열 패턴인 경우 (정확한 경로 또는 부분 경로)
+            return pattern === currentPath || (pattern.endsWith('*') && currentPath.startsWith(pattern.slice(0, -1)));
+        });
+    }
+    
+    /**
      * 발자국 효과 및 설정 패널 초기화
      */
     function initialize() {
         // 로컬 스토리지에서 설정 불러오기
         loadSettings();
         
+        // 현재 페이지가 대상이 아니면 중단
+        if (!shouldEnablePawEffect()) {
+            console.log('현재 페이지는 고양이 발자국 효과가 비활성화된 페이지입니다.');
+            return;
+        }
+        
         // 설정 패널 생성 및 추가
         createSettingsPanel();
         
-        // 이벤트 리스너 등록
+        // 이벤트 리스너 등록 - 터치 이벤트는 중복 방지 처리 추가
         document.addEventListener('click', handleInteraction);
-        document.addEventListener('touchstart', handleInteraction, { passive: true });
+        
+        // 터치 이벤트는 중복 발생 방지 처리
+        document.addEventListener('touchstart', function(event) {
+            if (touchProcessed) return;
+            touchProcessed = true;
+            
+            handleInteraction(event);
+            
+            // 일정 시간 후 플래그 초기화
+            setTimeout(() => {
+                touchProcessed = false;
+            }, TOUCH_COOLDOWN);
+        }, { passive: true });
         
         console.log('고양이 발자국 효과가 초기화되었습니다.');
     }
@@ -53,7 +105,7 @@
         // 설정 버튼 생성
         const button = document.createElement('button');
         button.id = 'cat-paw-settings-button';
-        button.textContent = '고양이 발자국 설정';
+        button.textContent = 'cat paw'; // 버튼 텍스트 변경
         container.appendChild(button);
         
         // 설정 패널 생성
@@ -115,6 +167,17 @@
                     <span class="cat-paw-toggle-slider"></span>
                 </label>
             </div>
+            
+            <div class="cat-paw-setting-row">
+                <label for="cat-paw-pages">특정 페이지 설정:</label>
+                <div style="flex-grow: 1;">
+                    <input type="text" id="cat-paw-pages" placeholder="/page-path, /section/*" style="width: 100%; box-sizing: border-box; padding: 5px;">
+                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
+                        쉼표로 구분된 경로 입력. 비워두면 모든 페이지에 적용. <br>
+                        예: /about, /products/* (products 하위 모든 페이지)
+                    </div>
+                </div>
+            </div>
         `;
         
         // 패널을 컨테이너에 추가
@@ -126,7 +189,11 @@
         // 설정 버튼 클릭 이벤트
         button.addEventListener('click', function() {
             panel.classList.toggle('hidden');
-            this.textContent = panel.classList.contains('hidden') ? '고양이 발자국 설정' : '설정 닫기';
+            
+            // 패널이 표시될 때 특정 페이지 입력 필드 초기화
+            if (!panel.classList.contains('hidden')) {
+                document.getElementById('cat-paw-pages').value = pawSettings.enabledPages.join(', ');
+            }
         });
         
         // 설정 이벤트 리스너 등록
@@ -174,6 +241,26 @@
         document.getElementById('cat-paw-rotation-toggle').addEventListener('change', function() {
             pawSettings.randomRotation = this.checked;
             saveSettings();
+        });
+        
+        // 특정 페이지 설정
+        document.getElementById('cat-paw-pages').addEventListener('blur', function() {
+            const pagesText = this.value.trim();
+            
+            if (pagesText === '') {
+                // 비어있으면 모든 페이지에 적용
+                pawSettings.enabledPages = [];
+            } else {
+                // 쉼표로 구분된 경로를 배열로 변환
+                pawSettings.enabledPages = pagesText.split(',')
+                    .map(path => path.trim())
+                    .filter(path => path.length > 0);
+            }
+            
+            saveSettings();
+            
+            // 페이지 설정 변경 시 알림
+            alert('페이지 설정이 저장되었습니다. 변경사항을 적용하려면 페이지를 새로고침하세요.');
         });
         
         // 색상 옵션 설정
