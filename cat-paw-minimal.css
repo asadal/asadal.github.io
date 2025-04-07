@@ -14,19 +14,6 @@
     z-index: 9999;
 }
 
-/* 발자국 색상 변형 - SVG 적용 */
-.paw-black {
-    background-image: url('data:image/svg+xml;utf8,<svg height="800px" width="800px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g><path d="M191.4,164.127c29.081-9.964,44.587-41.618,34.622-70.699c-9.952-29.072-41.6-44.592-70.686-34.626 c-29.082,9.956-44.588,41.608-34.632,70.69C130.665,158.582,162.314,174.075,191.4,164.127z" fill="rgba(0,0,0,0.6)"/><path d="M102.394,250.767v0.01c16.706-25.815,9.316-60.286-16.484-76.986c-25.81-16.691-60.273-9.316-76.978,16.489 v0.01c-16.695,25.805-9.306,60.268,16.495,76.958C51.236,283.957,85.694,276.573,102.394,250.767z" fill="rgba(0,0,0,0.6)"/><path d="M320.6,164.127c29.086,9.948,60.734-5.545,70.695-34.636c9.956-29.081-5.55-60.734-34.631-70.69 c-29.086-9.966-60.734,5.555-70.686,34.626C276.013,122.509,291.519,154.163,320.6,164.127z" fill="rgba(0,0,0,0.6)"/><path d="M256,191.489c-87.976,0-185.048,121.816-156.946,208.493c27.132,83.684,111.901,49.195,156.946,49.195 c45.045,0,129.813,34.489,156.945-49.195C441.048,313.305,343.976,191.489,256,191.489z" fill="rgba(0,0,0,0.6)"/><path d="M503.068,190.289v-0.01c-16.705-25.805-51.166-33.18-76.976-16.489c-25.801,16.7-33.19,51.171-16.486,76.986 v-0.01c16.7,25.806,51.158,33.19,76.968,16.481C512.374,250.557,519.764,216.095,503.068,190.289z" fill="rgba(0,0,0,0.6)"/></g></svg>');
-}
-
-.paw-orange {
-    background-image: url('data:image/svg+xml;utf8,<svg height="800px" width="800px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g><path d="M191.4,164.127c29.081-9.964,44.587-41.618,34.622-70.699c-9.952-29.072-41.6-44.592-70.686-34.626 c-29.082,9.956-44.588,41.608-34.632,70.69C130.665,158.582,162.314,174.075,191.4,164.127z" fill="rgba(255,140,0,0.6)"/><path d="M102.394,250.767v0.01c16.706-25.815,9.316-60.286-16.484-76.986c-25.81-16.691-60.273-9.316-76.978,16.489 v0.01c-16.695,25.805-9.306,60.268,16.495,76.958C51.236,283.957,85.694,276.573,102.394,250.767z" fill="rgba(255,140,0,0.6)"/><path d="M320.6,164.127c29.086,9.948,60.734-5.545,70.695-34.636c9.956-29.081-5.55-60.734-34.631-70.69 c-29.086-9.966-60.734,5.555-70.686,34.626C276.013,122.509,291.519,154.163,320.6,164.127z" fill="rgba(255,140,0,0.6)"/><path d="M256,191.489c-87.976,0-185.048,121.816-156.946,208.493c27.132,83.684,111.901,49.195,156.946,49.195 c45.045,0,129.813,34.489,156.945-49.195C441.048,313.305,343.976,191.489,256,191.489z" fill="rgba(255,140,0,0.6)"/><path d="M503.068,190.289v-0.01c-16.705-25.805-51.166-33.18-76.976-16.489c-25.801,16.7-33.19,51.171-16.486,76.986 v-0.01c16.7,25.806,51.158,33.19,76.968,16.481C512.374,250.557,519.764,216.095,503.068,190.289z" fill="rgba(255,140,0,0.6)"/></g></svg>');
-}
-
-.paw-gray {
-    background-image: url('data:image/svg+xml;utf8,<svg height="800px" width="800px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g><path d="M191.4,164.127c29.081-9.964,44.587-41.618,34.622-70.699c-9.952-29.072-41.6-44.592-70.686-34.626 c-29.082,9.956-44.588,41.608-34.632,70.69C130.665,158.582,162.314,174.075,191.4,164.127z" fill="rgba(120,120,120,0.6)"/><path d="M102.394,250.767v0.01c16.706-25.815,9.316-60.286-16.484-76.986c-25.81-16.691-60.273-9.316-76.978,16.489 v0.01c-16.695,25.805-9.306,60.268,16.495,76.958C51.236,283.957,85.694,276.573,102.394,250.767z" fill="rgba(120,120,120,0.6)"/><path d="M320.6,164.127c29.086,9.948,60.734-5.545,70.695-34.636c9.956-29.081-5.55-60.734-34.631-70.69 c-29.086-9.966-60.734,5.555-70.686,34.626C276.013,122.509,291.519,154.163,320.6,164.127z" fill="rgba(120,120,120,0.6)"/><path d="M256,191.489c-87.976,0-185.048,121.816-156.946,208.493c27.132,83.684,111.901,49.195,156.946,49.195 c45.045,0,129.813,34.489,156.945-49.195C441.048,313.305,343.976,191.489,256,191.489z" fill="rgba(120,120,120,0.6)"/><path d="M503.068,190.289v-0.01c-16.705-25.805-51.166-33.18-76.976-16.489c-25.801,16.7-33.19,51.171-16.486,76.986 v-0.01c16.7,25.806,51.158,33.19,76.968,16.481C512.374,250.557,519.764,216.095,503.068,190.289z" fill="rgba(120,120,120,0.6)"/></g></svg>');
-}
-
 /* 발자국 흔적 표시 */
 .paw-trail {
     position: absolute;
@@ -87,6 +74,8 @@
     margin-bottom: 15px;
     color: #333;
     font-size: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
 }
 
 .cat-paw-setting-row {
@@ -106,48 +95,33 @@
     margin: 0 10px;
 }
 
-/* 색상 선택기 스타일 */
-.cat-paw-color-options {
-    display: flex;
-    gap: 10px;
+.cat-paw-value-display {
+    min-width: 45px;
+    text-align: right;
+    color: #666;
 }
 
-.cat-paw-color-option {
-    width: 24px;
-    height: 24px;
+/* 색상 선택기 스타일 */
+.cat-paw-color-picker {
+    margin-left: 10px;
+}
+
+.cat-paw-color-picker input[type="color"] {
+    width: 30px;
+    height: 30px;
+    border: none;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.2s;
+    background: none;
+    padding: 0;
 }
 
-.cat-paw-color-option:hover {
-    transform: scale(1.1);
-}
-
-.cat-paw-color-option.selected {
-    border-color: #ff9966;
-    transform: scale(1.2);
-}
-
-.cat-paw-black {
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.cat-paw-orange {
-    background-color: rgba(255, 140, 0, 0.6);
-}
-
-.cat-paw-gray {
-    background-color: rgba(120, 120, 120, 0.6);
-}
-
-/* 토글 스위치 스타일 */
+/* 토글 스위치 스타일 - 더 작고 간결하게 수정 */
 .cat-paw-toggle-switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 24px;
+    width: 36px; /* 너비 축소 */
+    height: 20px; /* 높이 축소 */
     margin-left: 10px;
 }
 
@@ -165,19 +139,19 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
+    transition: .3s;
+    border-radius: 20px;
 }
 
 .cat-paw-toggle-slider:before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
+    height: 14px; /* 내부 원 크기 축소 */
+    width: 14px; /* 내부 원 크기 축소 */
+    left: 3px;
+    bottom: 3px;
     background-color: white;
-    transition: .4s;
+    transition: .3s;
     border-radius: 50%;
 }
 
@@ -186,7 +160,23 @@ input:checked + .cat-paw-toggle-slider {
 }
 
 input:checked + .cat-paw-toggle-slider:before {
-    transform: translateX(26px);
+    transform: translateX(16px); /* 이동 거리 축소 */
+}
+
+/* 입력 필드 스타일 */
+#cat-paw-pages {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.cat-paw-hint {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
 }
 
 /* 반응형 스타일 */
