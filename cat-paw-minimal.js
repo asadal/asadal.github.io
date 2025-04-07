@@ -105,7 +105,7 @@
         // 설정 버튼 생성
         const button = document.createElement('button');
         button.id = 'cat-paw-settings-button';
-        button.textContent = 'cat paw'; // 버튼 텍스트 변경
+        button.textContent = 'cat paw'; // 기본 버튼 텍스트
         container.appendChild(button);
         
         // 설정 패널 생성
@@ -186,6 +186,9 @@
         // 설정 버튼 클릭 이벤트
         button.addEventListener('click', function() {
             panel.classList.toggle('hidden');
+            
+            // 패널 상태에 따라 버튼 텍스트 변경
+            this.textContent = panel.classList.contains('hidden') ? 'cat paw' : 'close';
             
             // 패널이 표시될 때 특정 페이지 입력 필드 초기화
             if (!panel.classList.contains('hidden')) {
