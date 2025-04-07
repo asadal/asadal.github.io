@@ -10,7 +10,7 @@
         size: 30,               // 발자국 크기 (px)
         duration: 3,            // 발자국 표시 지속 시간 (초)
         opacity: 0.6,           // 발자국 투명도 (0-1)
-        color: 'orange',        // 발자국 색상 (black, orange, gray)
+        color: '#ff8c00',       // 발자국 색상 (16진수 색상 코드)
         showTrail: false,       // 발자국 흔적 표시 여부
         randomRotation: true,   // 랜덤 회전 적용 여부
         enabledPages: []        // 발자국 효과가 활성화될 특정 페이지 경로 (비어있으면 모든 페이지에서 활성화)
@@ -128,27 +128,25 @@
             <div class="cat-paw-setting-row">
                 <label for="cat-paw-size-slider">발자국 크기:</label>
                 <input type="range" id="cat-paw-size-slider" min="15" max="60" value="${pawSettings.size}">
-                <span id="cat-paw-size-value">${pawSettings.size}px</span>
+                <span id="cat-paw-size-value" class="cat-paw-value-display">${pawSettings.size}px</span>
             </div>
             
             <div class="cat-paw-setting-row">
                 <label for="cat-paw-duration-slider">지속 시간:</label>
                 <input type="range" id="cat-paw-duration-slider" min="1" max="10" value="${pawSettings.duration}">
-                <span id="cat-paw-duration-value">${pawSettings.duration}초</span>
+                <span id="cat-paw-duration-value" class="cat-paw-value-display">${pawSettings.duration}초</span>
             </div>
             
             <div class="cat-paw-setting-row">
                 <label for="cat-paw-opacity-slider">투명도:</label>
                 <input type="range" id="cat-paw-opacity-slider" min="10" max="100" value="${Math.round(pawSettings.opacity * 100)}">
-                <span id="cat-paw-opacity-value">${Math.round(pawSettings.opacity * 100)}%</span>
+                <span id="cat-paw-opacity-value" class="cat-paw-value-display">${Math.round(pawSettings.opacity * 100)}%</span>
             </div>
             
             <div class="cat-paw-setting-row">
-                <label>발자국 색상:</label>
-                <div class="cat-paw-color-options">
-                    <div id="cat-paw-color-black" class="cat-paw-color-option cat-paw-black ${pawSettings.color === 'black' ? 'selected' : ''}"></div>
-                    <div id="cat-paw-color-orange" class="cat-paw-color-option cat-paw-orange ${pawSettings.color === 'orange' ? 'selected' : ''}"></div>
-                    <div id="cat-paw-color-gray" class="cat-paw-color-option cat-paw-gray ${pawSettings.color === 'gray' ? 'selected' : ''}"></div>
+                <label for="cat-paw-color-picker">발자국 색상:</label>
+                <div class="cat-paw-color-picker">
+                    <input type="color" id="cat-paw-color-picker" value="${pawSettings.color}">
                 </div>
             </div>
             
@@ -169,12 +167,11 @@
             </div>
             
             <div class="cat-paw-setting-row">
-                <label for="cat-paw-pages">특정 페이지 설정:</label>
+                <label for="cat-paw-pages">특정 페이지:</label>
                 <div style="flex-grow: 1;">
-                    <input type="text" id="cat-paw-pages" placeholder="/page-path, /section/*" style="width: 100%; box-sizing: border-box; padding: 5px;">
-                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
-                        쉼표로 구분된 경로 입력. 비워두면 모든 페이지에 적용. <br>
-                        예: /about, /products/* (products 하위 모든 페이지)
+                    <input type="text" id="cat-paw-pages" placeholder="/page-path, /section/*">
+                    <div class="cat-paw-hint">
+                        쉼표로 구분. 비우면 모든 페이지에 적용.
                     </div>
                 </div>
             </div>
@@ -231,6 +228,12 @@
             saveSettings();
         });
         
+        // 색상 선택기 변경
+        document.getElementById('cat-paw-color-picker').addEventListener('input', function() {
+            pawSettings.color = this.value;
+            saveSettings();
+        });
+        
         // 발자국 흔적 설정
         document.getElementById('cat-paw-trail-toggle').addEventListener('change', function() {
             pawSettings.showTrail = this.checked;
@@ -261,21 +264,6 @@
             
             // 페이지 설정 변경 시 알림
             alert('페이지 설정이 저장되었습니다. 변경사항을 적용하려면 페이지를 새로고침하세요.');
-        });
-        
-        // 색상 옵션 설정
-        const colorOptions = document.querySelectorAll('.cat-paw-color-option');
-        colorOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                // 이전 선택 해제
-                colorOptions.forEach(opt => opt.classList.remove('selected'));
-                // 현재 선택 적용
-                this.classList.add('selected');
-                
-                // ID에서 색상 추출 (예: cat-paw-color-black -> black)
-                pawSettings.color = this.id.split('-')[3];
-                saveSettings();
-            });
         });
     }
     
@@ -326,6 +314,37 @@
     }
     
     /**
+     * CSS 색상 문자열을 RGBA 형식으로 변환
+     * @param {string} color - CSS 색상 문자열 (#RRGGBB 형식)
+     * @param {number} opacity - 투명도 (0-1)
+     * @returns {string} RGBA 색상 문자열
+     */
+    function hexToRgba(hexColor, opacity) {
+        // 색상 코드 정규화 (#RGB -> #RRGGBB)
+        let hex = hexColor.replace('#', '');
+        if (hex.length === 3) {
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        }
+        
+        // 16진수 -> 10진수 변환
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        
+        // RGBA 반환
+        return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+    }
+    
+    /**
+     * SVG 데이터 URL 생성
+     * @param {string} color - 발자국 색상 (RGBA 형식)
+     * @returns {string} SVG 데이터 URL
+     */
+    function createPawSvgUrl(color) {
+        return `data:image/svg+xml;utf8,<svg height="800px" width="800px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g><path d="M191.4,164.127c29.081-9.964,44.587-41.618,34.622-70.699c-9.952-29.072-41.6-44.592-70.686-34.626 c-29.082,9.956-44.588,41.608-34.632,70.69C130.665,158.582,162.314,174.075,191.4,164.127z" fill="${encodeURIComponent(color)}"/><path d="M102.394,250.767v0.01c16.706-25.815,9.316-60.286-16.484-76.986c-25.81-16.691-60.273-9.316-76.978,16.489 v0.01c-16.695,25.805-9.306,60.268,16.495,76.958C51.236,283.957,85.694,276.573,102.394,250.767z" fill="${encodeURIComponent(color)}"/><path d="M320.6,164.127c29.086,9.948,60.734-5.545,70.695-34.636c9.956-29.081-5.55-60.734-34.631-70.69 c-29.086-9.966-60.734,5.555-70.686,34.626C276.013,122.509,291.519,154.163,320.6,164.127z" fill="${encodeURIComponent(color)}"/><path d="M256,191.489c-87.976,0-185.048,121.816-156.946,208.493c27.132,83.684,111.901,49.195,156.946,49.195 c45.045,0,129.813,34.489,156.945-49.195C441.048,313.305,343.976,191.489,256,191.489z" fill="${encodeURIComponent(color)}"/><path d="M503.068,190.289v-0.01c-16.705-25.805-51.166-33.18-76.976-16.489c-25.801,16.7-33.19,51.171-16.486,76.986 v-0.01c16.7,25.806,51.158,33.19,76.968,16.481C512.374,250.557,519.764,216.095,503.068,190.289z" fill="${encodeURIComponent(color)}"/></g></svg>`;
+    }
+    
+    /**
      * 발자국 생성 함수
      * @param {number} x - 발자국 X 좌표
      * @param {number} y - 발자국 Y 좌표
@@ -333,6 +352,9 @@
     function createPaw(x, y) {
         // 랜덤 회전각 생성 (-30도 ~ 30도)
         const rotation = pawSettings.randomRotation ? Math.floor(Math.random() * 61) - 30 : 0;
+        
+        // RGBA 색상 생성
+        const pawColor = hexToRgba(pawSettings.color, pawSettings.opacity);
         
         // 발자국 흔적 표시 (활성화된 경우)
         if (pawSettings.showTrail) {
@@ -342,6 +364,10 @@
             trail.style.top = `${y}px`;
             trail.style.width = `${pawSettings.size * 0.8}px`;
             trail.style.height = `${pawSettings.size * 0.8}px`;
+            
+            // 흔적 색상 설정
+            const trailColor = hexToRgba(pawSettings.color, 0.2);
+            trail.style.backgroundColor = trailColor;
             
             document.body.appendChild(trail);
             
@@ -353,7 +379,7 @@
         
         // 발자국 엘리먼트 생성
         const pawElement = document.createElement('div');
-        pawElement.className = `cat-paw paw-${pawSettings.color}`;
+        pawElement.className = 'cat-paw';
         pawElement.style.width = `${pawSettings.size}px`;
         pawElement.style.height = `${pawSettings.size}px`;
         pawElement.style.left = `${x}px`;
@@ -361,12 +387,15 @@
         pawElement.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
         pawElement.style.opacity = '0';
         
+        // SVG 배경 이미지 설정
+        pawElement.style.backgroundImage = `url('${createPawSvgUrl(pawColor)}')`;
+        
         // 문서에 추가
         document.body.appendChild(pawElement);
         
         // 발자국 표시 (약간의 지연으로 트랜지션 효과 적용)
         setTimeout(() => {
-            pawElement.style.opacity = pawSettings.opacity;
+            pawElement.style.opacity = '1';
         }, 10);
         
         // 지정된 시간 후 서서히 사라지기
