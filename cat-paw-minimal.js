@@ -1,6 +1,6 @@
 /**
  * 고양이 발자국 효과 - 기존 웹사이트에 영향을 최소화한 스크립트
- * 이 스크립트는 웹 페이지에 고양이 발자국 효과와 설정 패널을 추가합니다.
+ * shadcn UI 스타일로 개선된 버전
  */
 
 (function() {
@@ -115,61 +115,66 @@
         
         // 패널 내용 생성
         panel.innerHTML = `
-            <h3>고양이 발자국 설정</h3>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-effect-toggle">발자국 효과:</label>
-                <label class="cat-paw-toggle-switch">
-                    <input type="checkbox" id="cat-paw-effect-toggle" ${pawSettings.enabled ? 'checked' : ''}>
-                    <span class="cat-paw-toggle-slider"></span>
-                </label>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-size-slider">발자국 크기:</label>
-                <input type="range" id="cat-paw-size-slider" min="15" max="60" value="${pawSettings.size}">
-                <span id="cat-paw-size-value" class="cat-paw-value-display">${pawSettings.size}px</span>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-duration-slider">지속 시간:</label>
-                <input type="range" id="cat-paw-duration-slider" min="1" max="10" value="${pawSettings.duration}">
-                <span id="cat-paw-duration-value" class="cat-paw-value-display">${pawSettings.duration}초</span>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-opacity-slider">투명도:</label>
-                <input type="range" id="cat-paw-opacity-slider" min="10" max="100" value="${Math.round(pawSettings.opacity * 100)}">
-                <span id="cat-paw-opacity-value" class="cat-paw-value-display">${Math.round(pawSettings.opacity * 100)}%</span>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-color-picker">발자국 색상:</label>
-                <div class="cat-paw-color-picker">
-                    <input type="color" id="cat-paw-color-picker" value="${pawSettings.color}">
+            <h3>settings</h3>
+            <div class="cat-paw-settings-content">
+                <div class="cat-paw-setting-row">
+                    <label>발자국 효과</label>
+                    <label class="cat-paw-toggle-switch">
+                        <input type="checkbox" id="cat-paw-effect-toggle" ${pawSettings.enabled ? 'checked' : ''}>
+                        <span class="cat-paw-toggle-slider"></span>
+                    </label>
                 </div>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-trail-toggle">발자국 흔적:</label>
-                <label class="cat-paw-toggle-switch">
-                    <input type="checkbox" id="cat-paw-trail-toggle" ${pawSettings.showTrail ? 'checked' : ''}>
-                    <span class="cat-paw-toggle-slider"></span>
-                </label>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-rotation-toggle">랜덤 회전:</label>
-                <label class="cat-paw-toggle-switch">
-                    <input type="checkbox" id="cat-paw-rotation-toggle" ${pawSettings.randomRotation ? 'checked' : ''}>
-                    <span class="cat-paw-toggle-slider"></span>
-                </label>
-            </div>
-            
-            <div class="cat-paw-setting-row">
-                <label for="cat-paw-pages">특정 페이지:</label>
-                <div style="flex-grow: 1;">
-                    <input type="text" id="cat-paw-pages" placeholder="/page-path, /section/*">
+                
+                <div class="cat-paw-setting-row">
+                    <label>발자국 크기</label>
+                    <div class="cat-paw-slider-container">
+                        <input type="range" id="cat-paw-size-slider" min="15" max="60" value="${pawSettings.size}">
+                        <span id="cat-paw-size-value" class="cat-paw-value-display">${pawSettings.size}px</span>
+                    </div>
+                </div>
+                
+                <div class="cat-paw-setting-row">
+                    <label>지속 시간</label>
+                    <div class="cat-paw-slider-container">
+                        <input type="range" id="cat-paw-duration-slider" min="1" max="10" value="${pawSettings.duration}">
+                        <span id="cat-paw-duration-value" class="cat-paw-value-display">${pawSettings.duration}초</span>
+                    </div>
+                </div>
+                
+                <div class="cat-paw-setting-row">
+                    <label>투명도</label>
+                    <div class="cat-paw-slider-container">
+                        <input type="range" id="cat-paw-opacity-slider" min="10" max="100" value="${Math.round(pawSettings.opacity * 100)}">
+                        <span id="cat-paw-opacity-value" class="cat-paw-value-display">${Math.round(pawSettings.opacity * 100)}%</span>
+                    </div>
+                </div>
+                
+                <div class="cat-paw-setting-row">
+                    <label>발자국 색상</label>
+                    <div class="cat-paw-color-picker">
+                        <input type="color" id="cat-paw-color-picker" value="${pawSettings.color}">
+                    </div>
+                </div>
+                
+                <div class="cat-paw-setting-row">
+                    <label>발자국 흔적</label>
+                    <label class="cat-paw-toggle-switch">
+                        <input type="checkbox" id="cat-paw-trail-toggle" ${pawSettings.showTrail ? 'checked' : ''}>
+                        <span class="cat-paw-toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="cat-paw-setting-row">
+                    <label>랜덤 회전</label>
+                    <label class="cat-paw-toggle-switch">
+                        <input type="checkbox" id="cat-paw-rotation-toggle" ${pawSettings.randomRotation ? 'checked' : ''}>
+                        <span class="cat-paw-toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="cat-paw-setting-row" style="flex-direction: column; align-items: stretch;">
+                    <label style="margin-bottom: 8px;">특정 페이지</label>
+                    <input type="text" id="cat-paw-pages" class="cat-paw-page-input" placeholder="/page-path, /section/*">
                     <div class="cat-paw-hint">
                         쉼표로 구분. 비우면 모든 페이지에 적용.
                     </div>
