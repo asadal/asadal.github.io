@@ -1,6 +1,6 @@
-/* 고양이 발자국 효과 - shadcn 스타일 */
+/* 고양이 발자국 효과 - 모던 미니멀 스타일 */
 
-/* 발자국 스타일 */
+/* 발자국 스타일 (기존 스타일 유지) */
 .cat-paw {
   position: absolute;
   width: 30px;
@@ -14,7 +14,6 @@
   z-index: 9999;
 }
 
-/* 발자국 흔적 */
 .paw-trail {
   position: absolute;
   width: 24px;
@@ -26,67 +25,71 @@
   z-index: 9998;
 }
 
-/* 설정 패널 컨테이너 */
+/* 설정 패널 컨테이너 - 더 깔끔하고 현대적인 디자인 */
 #cat-paw-settings-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 24px;
+  right: 24px;
   z-index: 10000;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* 설정 버튼 - shadcn 스타일 */
+/* 설정 버튼 - 미니멀하고 세련된 스타일 */
 #cat-paw-settings-button {
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 8px 12px;
+  background-color: #f4f4f5;
+  color: #18181b;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  padding: 10px 16px;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 #cat-paw-settings-button:hover {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
+  border-color: #d4d4d8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* 설정 패널 - shadcn 스타일 */
+/* 설정 패널 - 더 넓고 깔끔한 디자인 */
 #cat-paw-settings-panel {
   position: absolute;
-  bottom: 50px;
+  bottom: 60px;
   right: 0;
-  width: 280px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
+  width: 320px; /* 약간 넓게 조정 */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f3;
   overflow: hidden;
   max-height: 80vh;
-  border: 1px solid #eaeaea;
+  transition: all 0.3s ease;
 }
 
 #cat-paw-settings-panel.hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
 }
 
 /* 패널 헤더 */
 #cat-paw-settings-panel h3 {
   margin: 0;
-  padding: 16px;
-  font-size: 14px;
+  padding: 16px 20px;
+  font-size: 16px;
   font-weight: 600;
-  color: #333;
-  border-bottom: 1px solid #eaeaea;
+  color: #18181b;
+  border-bottom: 1px solid #f0f0f3;
+  background-color: #fafafa;
 }
 
 /* 패널 콘텐츠 */
 .cat-paw-settings-content {
-  padding: 16px;
-  max-height: calc(80vh - 49px);
+  padding: 20px;
+  max-height: calc(80vh - 60px);
   overflow-y: auto;
 }
 
@@ -95,18 +98,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f3;
 }
 
 .cat-paw-setting-row:last-child {
+  border-bottom: none;
   margin-bottom: 0;
 }
 
 /* 설정 라벨 */
 .cat-paw-setting-row label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  color: #4b5563;
+  color: #27272a;
   flex-shrink: 0;
 }
 
@@ -115,8 +121,8 @@
   display: flex;
   align-items: center;
   flex: 1;
-  margin-left: 12px;
-  max-width: 150px;
+  margin-left: 16px;
+  max-width: 160px;
 }
 
 /* 슬라이더 */
@@ -125,45 +131,47 @@
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
-  background: #e5e7eb;
+  background: #e4e4e7;
   border-radius: 2px;
-  margin: 0 8px 0 0;
+  margin: 0 12px 0 0;
 }
 
 .cat-paw-setting-row input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background-color: #3b82f6;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cat-paw-setting-row input[type="range"]::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background-color: #3b82f6;
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* 값 표시 */
 .cat-paw-value-display {
-  font-size: 12px;
-  color: #6b7280;
+  font-size: 13px;
+  color: #52525b;
   width: 40px;
   text-align: right;
   flex-shrink: 0;
 }
 
-/* 토글 스위치 - 간결하게 재설계 */
+/* 토글 스위치 - 미니멀 디자인 */
 .cat-paw-toggle-switch {
   position: relative;
   display: inline-block;
-  width: 36px;
-  height: 20px;
+  width: 44px;
+  height: 24px;
   flex-shrink: 0;
 }
 
@@ -180,22 +188,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #e5e7eb;
+  background-color: #e4e4e7;
   transition: .2s;
-  border-radius: 20px;
+  border-radius: 24px;
 }
 
 .cat-paw-toggle-slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   left: 2px;
   bottom: 2px;
   background-color: white;
   transition: .2s;
   border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input:checked + .cat-paw-toggle-slider {
@@ -203,7 +211,7 @@ input:checked + .cat-paw-toggle-slider {
 }
 
 input:checked + .cat-paw-toggle-slider:before {
-  transform: translateX(16px);
+  transform: translateX(20px);
 }
 
 /* 색상 선택기 */
@@ -212,10 +220,10 @@ input:checked + .cat-paw-toggle-slider:before {
 }
 
 .cat-paw-color-picker input[type="color"] {
-  width: 36px;
-  height: 20px;
-  border: 1px solid #e5e7eb;
-  border-radius: 4px;
+  width: 44px;
+  height: 24px;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
   padding: 0;
   background: none;
   cursor: pointer;
@@ -224,28 +232,35 @@ input:checked + .cat-paw-toggle-slider:before {
 /* 특정 페이지 입력 필드 */
 .cat-paw-page-input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  font-size: 13px;
+  padding: 10px;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  font-size: 14px;
   box-sizing: border-box;
+  background-color: #fafafa;
 }
 
 .cat-paw-hint {
-  font-size: 11px;
-  color: #9ca3af;
-  margin-top: 4px;
+  font-size: 12px;
+  color: #71717a;
+  margin-top: 8px;
   line-height: 1.4;
 }
 
 /* 반응형 스타일 */
 @media (max-width: 600px) {
+  #cat-paw-settings-container {
+    bottom: 16px;
+    right: 16px;
+  }
+
   #cat-paw-settings-panel {
-    width: 260px;
+    width: 300px;
     right: 0;
+    bottom: 50px;
   }
   
   .cat-paw-slider-container {
-    max-width: 120px;
+    max-width: 140px;
   }
 }
