@@ -1,4 +1,31 @@
-/* 색상 팔레트 스타일 추가 */
+/* 고양이 발자국 효과 - 모던 미니멀 스타일 */
+
+/* 발자국 스타일 */
+.cat-paw {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: opacity 0.3s ease-out;
+  z-index: 9999;
+}
+
+.paw-trail {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(255, 200, 150, 0.2);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* 색상 팔레트 스타일 */
 .cat-paw-color-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -24,18 +51,246 @@
   box-shadow: 0 0 0 2px #3b82f6;
 }
 
-/* 설정 패널 너비 조정 */
-#cat-paw-settings-panel {
-  width: 340px; /* 약간 더 넓게 */
-  max-width: 90vw; /* 모바일 대응 */
-  right: 24px; /* 오른쪽 여백 추가 */
+/* 설정 패널 컨테이너 */
+#cat-paw-settings-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* 반응형 조정 */
+/* 설정 버튼 */
+#cat-paw-settings-button {
+  background-color: #f4f4f5;
+  color: #18181b;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#cat-paw-settings-button:hover {
+  background-color: #fafafa;
+  border-color: #d4d4d8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* 설정 패널 */
+#cat-paw-settings-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 24px; /* 오른쪽 여백 추가 */
+  width: 340px; /* 약간 더 넓게 */
+  max-width: 90vw; /* 모바일 대응 */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f3;
+  overflow: hidden;
+  max-height: 80vh;
+  transition: all 0.3s ease;
+}
+
+#cat-paw-settings-panel.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+/* 패널 헤더 */
+#cat-paw-settings-panel h3 {
+  margin: 0;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #18181b;
+  border-bottom: 1px solid #f0f0f3;
+  background-color: #fafafa;
+}
+
+/* 패널 콘텐츠 */
+.cat-paw-settings-content {
+  padding: 20px;
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+}
+
+/* 설정 행 */
+.cat-paw-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f3;
+}
+
+.cat-paw-setting-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* 설정 라벨 */
+.cat-paw-setting-row label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #27272a;
+  flex-shrink: 0;
+}
+
+/* 슬라이더 컨테이너 */
+.cat-paw-slider-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 16px;
+  max-width: 160px;
+}
+
+/* 슬라이더 */
+.cat-paw-setting-row input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #e4e4e7;
+  border-radius: 2px;
+  margin: 0 12px 0 0;
+}
+
+.cat-paw-setting-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cat-paw-setting-row input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 값 표시 */
+.cat-paw-value-display {
+  font-size: 13px;
+  color: #52525b;
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* 토글 스위치 */
+.cat-paw-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cat-paw-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cat-paw-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e4e4e7;
+  transition: .2s;
+  border-radius: 24px;
+}
+
+.cat-paw-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .2s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:checked + .cat-paw-toggle-slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .cat-paw-toggle-slider:before {
+  transform: translateX(20px);
+}
+
+/* 색상 선택기 */
+.cat-paw-color-picker {
+  display: flex;
+  align-items: center;
+}
+
+.cat-paw-color-picker input[type="color"] {
+  width: 44px;
+  height: 24px;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+/* 특정 페이지 입력 필드 */
+.cat-paw-page-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+.cat-paw-hint {
+  font-size: 12px;
+  color: #71717a;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* 반응형 스타일 */
 @media (max-width: 600px) {
+  #cat-paw-settings-container {
+    bottom: 16px;
+    right: 16px;
+  }
+
   #cat-paw-settings-panel {
     width: 90vw;
     max-width: 340px;
     right: 16px;
+    bottom: 50px;
+  }
+  
+  .cat-paw-slider-container {
+    max-width: 140px;
   }
 }
