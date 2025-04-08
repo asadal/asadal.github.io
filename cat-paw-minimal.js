@@ -1,6 +1,6 @@
 /**
  * 고양이 발자국 효과 - 기존 웹사이트에 영향을 최소화한 스크립트
- * 터치 이벤트 중복 방지 및 색상 팔레트 개선 버전
+ * 색상 팔레트 및 값 표시 개선 버전
  */
 
 (function() {
@@ -22,6 +22,20 @@
     // 터치 이벤트 중복 방지를 위한 변수
     let lastTouchTime = 0;
     const TOUCH_COOLDOWN = 300; // 밀리초
+    
+    // 고해상도 색상 팔레트 (Hex 코드)
+    const COLOR_PALETTE = [
+        // 레드 톤
+        '#FFC5B1', '#FF9A8B', '#FF6B6B', '#FF4136', '#8B0000',
+        // 퍼플 톤
+        '#E0BBE4', '#957DAD', '#6A5ACD', '#4B0082', '#483D8B',
+        // 그린 톤
+        '#B0E0E6', '#98FB98', '#00FA9A', '#2E8B57', '#008080',
+        // 옐로우/오렌지 톤
+        '#FFF9C4', '#FFF59D', '#FFEB3B', '#FFC107', '#FF9800',
+        // 그레이 톤
+        '#F5F5F5', '#E0E0E0', '#9E9E9E', '#616161', '#212121'
+    ];
     
     // DOM이 로드된 후 초기화
     if (document.readyState === 'loading') {
@@ -123,18 +137,10 @@
         panel.id = 'cat-paw-settings-panel';
         panel.className = 'hidden';
         
-        // 색상 팔레트 생성
-        const colorPalette = [
-            '#ff8c00', '#ff5733', '#ff3366', '#c70039', 
-            '#900c3f', '#581845', '#4a235a', '#1f618d', 
-            '#117a65', '#0e6251', '#145a32', '#7d6608', 
-            '#d35400', '#a04000', '#6c3483', '#2874a6'
-        ];
-        
         // 색상 선택 HTML 생성
         const colorPickerHtml = `
             <div class="cat-paw-color-grid">
-                ${colorPalette.map(color => 
+                ${COLOR_PALETTE.map(color => 
                     `<div class="cat-paw-color-item" data-color="${color}" style="background-color: ${color};"></div>`
                 ).join('')}
             </div>
@@ -155,24 +161,24 @@
                 <div class="cat-paw-setting-row">
                     <label>발자국 크기</label>
                     <div class="cat-paw-slider-container">
+                        <div class="cat-paw-value-display" id="cat-paw-size-value">${pawSettings.size}px</div>
                         <input type="range" id="cat-paw-size-slider" min="15" max="60" value="${pawSettings.size}">
-                        <span id="cat-paw-size-value" class="cat-paw-value-display">${pawSettings.size}px</span>
                     </div>
                 </div>
                 
                 <div class="cat-paw-setting-row">
                     <label>지속 시간</label>
                     <div class="cat-paw-slider-container">
+                        <div class="cat-paw-value-display" id="cat-paw-duration-value">${pawSettings.duration}초</div>
                         <input type="range" id="cat-paw-duration-slider" min="1" max="10" value="${pawSettings.duration}">
-                        <span id="cat-paw-duration-value" class="cat-paw-value-display">${pawSettings.duration}초</span>
                     </div>
                 </div>
                 
                 <div class="cat-paw-setting-row">
                     <label>투명도</label>
                     <div class="cat-paw-slider-container">
+                        <div class="cat-paw-value-display" id="cat-paw-opacity-value">${Math.round(pawSettings.opacity * 100)}%</div>
                         <input type="range" id="cat-paw-opacity-slider" min="10" max="100" value="${Math.round(pawSettings.opacity * 100)}">
-                        <span id="cat-paw-opacity-value" class="cat-paw-value-display">${Math.round(pawSettings.opacity * 100)}%</span>
                     </div>
                 </div>
                 
@@ -302,7 +308,7 @@
                 pawSettings.enabledPages = [];
             } else {
                 // 쉼표로 구분된 경로를 배열로 변환
-                pawSettings.enabledPages = pagesText.split(',')
+                pawSettings = pagesText.split(',')
                     .map(path => path.trim())
                     .filter(path => path.length > 0);
             }
