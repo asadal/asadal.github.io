@@ -84,9 +84,8 @@
 #cat-paw-settings-panel {
   position: absolute;
   bottom: 60px;
-  right: 24px; /* 오른쪽 여백 추가 */
-  width: 340px; /* 약간 더 넓게 */
-  max-width: 90vw; /* 모바일 대응 */
+  right: 0;
+  width: 340px;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -120,11 +119,10 @@
   overflow-y: auto;
 }
 
-/* 설정 행 */
+/* 설정 행 스타일 수정 */
 .cat-paw-setting-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid #f0f0f3;
@@ -136,19 +134,20 @@
 }
 
 /* 설정 라벨 */
-.cat-paw-setting-row label {
+.cat-paw-setting-row > label:first-child {
+  flex-grow: 1;
   font-size: 14px;
   font-weight: 500;
   color: #27272a;
-  flex-shrink: 0;
+  margin-right: 12px;
 }
 
-/* 슬라이더 컨테이너 */
+/* 슬라이더 컨테이너 스타일 수정 */
 .cat-paw-slider-container {
   display: flex;
   align-items: center;
   flex: 1;
-  margin-left: 16px;
+  margin-left: 12px;
   max-width: 160px;
 }
 
@@ -184,12 +183,13 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 값 표시 */
+/* 값 표시 스타일 수정 */
 .cat-paw-value-display {
   font-size: 13px;
   color: #52525b;
   width: 40px;
   text-align: right;
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
@@ -255,7 +255,7 @@ input:checked + .cat-paw-toggle-slider:before {
   padding: 0;
   background: none;
   cursor: pointer;
-  margin-left: 8px;
+  margin-left: 12px;
 }
 
 /* 특정 페이지 입력 필드 */
@@ -286,7 +286,7 @@ input:checked + .cat-paw-toggle-slider:before {
   #cat-paw-settings-panel {
     width: 90vw;
     max-width: 340px;
-    right: 16px;
+    right: 0;
     bottom: 50px;
   }
   
