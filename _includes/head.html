@@ -1,4 +1,21 @@
 <head>
+  <!-- wireboard tag -->
+<script type="text/javascript">
+;(function(w,i,r,e,b,oar,d){if(!w[b]){w.WireBoardNamespace=w.WireBoardNamespace||[];
+w.WireBoardNamespace.push(b);w[b]=function(){(w[b].q=w[b].q||[]).push(arguments)};
+w[b].q=w[b].q||[];oar=i.createElement(r);d=i.getElementsByTagName(r)[0];oar.async=1;
+oar.src=e;d.parentNode.insertBefore(oar,d)}}(window,document,"script","https://static.wireboard.io/wireboard.js","wireboard"));
+wireboard('newTracker', 'wb', 'pipeline-0.collector.wireboard.io', {
+    appId: 'cHfpbaLS',
+    forceSecureTracker: true,
+    contexts: {
+      performanceTiming: true,
+    }
+});
+window.wireboard('enableActivityTracking', 5, 10);
+var customContext=[{schema:'wb:io.wireboard/publisher',data:{publisher:'c339305b-9da7-4d68-a0cf-0003edc4e40f'}}]
+window.wireboard('trackPageView', null, customContext);
+</script>
   <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
 
   {% include meta.html %}
